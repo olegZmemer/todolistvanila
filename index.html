@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <button class="go-back-button">&lt -</button>
+                <div class="title-of-page">Your main tasks</div>
+                <button class="settings-button">*</button>
+            </div>
+            <div class="add-block">
+                <form action="" id="add-task-form" onsubmit= 'return false' method="GET">
+                    <label for="add-task">
+                        <input type="text" name="add-task" id="add-task" placeholder="Write your task" class="add-input">
+                    </label>
+                    <input type="submit" class="add-button" value = '+'>
+                </form>
+            </div>
+            <div class="active-tasks-list">
+                <!-- <div class="task-block">
+                    <input type="checkbox" class="check-task-button">
+                    <div class="task-info">
+                        <div class="task-name">Task name</div>
+                        <div class="task-description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div> 
+                    </div>
+                    <button class="task-remove">X</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <script src='script.js'></script>
+</body>
+
+</html>

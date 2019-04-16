@@ -1,0 +1,67 @@
+
+.container{
+    width: 350px;
+    min-height: 400px;
+    height: auto;
+    margin: 100px auto;
+    background-color: rgba(224, 224, 224, 0.8);
+    display: flex;
+    flex-direction: column;
+    border: 3px solid lightgrey;
+}
+.header{
+    display: flex;
+    padding: 10px 15px 10px 15px;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+.header button{
+    background-color: inherit;
+    border: 1px solid white;
+    color: white;
+}
+#add-task-form{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+.add-input{ 
+    height: 30px;
+}
+.add-button{
+    width: 25px;
+    height: 25px;
+    border: 2px solid white;
+    background-color: black;
+    outline: 0;
+    color: white;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.task-block{
+    display: flex;
+    padding: 0 10px 0 10px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+.task-block input[type = 'checkbox']{
+    margin-top: 7px;
+}
+.task-info{
+    font-size: 24px;
+    width: 80%;
+}
+.task-description{
+    margin-top: 5px;
+    opacity: 0.4;
+}
+.task-remove{
+    width: 30px;
+    height: 30px;
+    float: left;
+}
