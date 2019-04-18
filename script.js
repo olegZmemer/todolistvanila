@@ -24,7 +24,7 @@
                 </div>
                 <button class="task-remove">X</button>
             `;
-                taskBlock.id = task.id;
+                // taskBlock.id = task.id;
                 document.querySelector('.active-tasks-list').appendChild(taskBlock);
                 if (task.isChecked) {
                     taskBlock.querySelector('.check-task-button').setAttribute('disabled', true);
@@ -69,6 +69,16 @@
                 taskBlock.querySelector('.check-task-button').setAttribute('disabled', true);
                 document.querySelector('.checked-tasks-list').appendChild(taskBlock);
                 saveToLocaleStorage();
+            }
+        });
+        taskBlock.querySelector('.task-remove').addEventListener('click', function(e){
+            if(e.target.closest('.task-block').id == task.id){
+                document.getElementById(task.id).remove();
+                dataObject.tasks.forEach(function(elem,pos){
+                    if(elem.id == task.id){
+                        dataObject.tasks.splice(pos, 1);
+                    }
+                })
             }
         })
     }
