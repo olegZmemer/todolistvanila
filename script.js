@@ -24,7 +24,7 @@
                 </div>
                 <button class="task-remove">X</button>
             `;
-                // taskBlock.id = task.id;
+                taskBlock.id = task.id;
                 document.querySelector('.active-tasks-list').appendChild(taskBlock);
                 if (task.isChecked) {
                     taskBlock.querySelector('.check-task-button').setAttribute('disabled', true);
@@ -77,6 +77,7 @@
                 dataObject.tasks.forEach(function(elem,pos){
                     if(elem.id == task.id){
                         dataObject.tasks.splice(pos, 1);
+                        saveToLocaleStorage();
                     }
                 })
             }
