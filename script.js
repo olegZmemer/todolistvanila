@@ -9,10 +9,11 @@
         serializedDataObject = JSON.stringify(dataObject);
     if (localStorage.getItem('mainData')) {
         (function loadStorage() {
+
             let data = JSON.parse(localStorage.getItem("mainData"));
             let tasks = data.tasks;
-            dataObject.id = JSON.parse(localStorage.getItem('mainData')).id;
-            dataObject.tasks = JSON.parse(localStorage.getItem('mainData')).tasks;
+            dataObject.id = data.id;
+            dataObject.tasks = data.tasks;
             data.id = dataObject.id;
             tasks.forEach(function (task) {
                 let taskBlock = document.createElement('div');
@@ -28,6 +29,7 @@
                 document.querySelector('.active-tasks-list').appendChild(taskBlock);
                 if (task.isChecked) {
                     taskBlock.querySelector('.check-task-button').setAttribute('disabled', true);
+                    taskBlock.querySelector('.check-task-button').checked = true;
                     document.querySelector('.checked-tasks-list').appendChild(taskBlock);
                 }
                 checkTask(taskBlock, task);
@@ -62,20 +64,25 @@
     }
 
     function checkTask(taskBlock, task) {
-        taskBlock.querySelector('.check-task-button').addEventListener('change', function (e) {
-            if (e.target.closest('.task-block').id == task.id) {
-                task.isChecked = true;
+        taskBlock.querySelector('.check-task-button').addEventListener('change', function () {
+            if (taskBlock.id == task.id) {
                 let taskBlock = document.getElementById(task.id);
                 taskBlock.querySelector('.check-task-button').setAttribute('disabled', true);
+                taskBlock.querySelector('.check-task-button').checked = true;
                 document.querySelector('.checked-tasks-list').appendChild(taskBlock);
-                saveToLocaleStorage();
+                dataObject.tasks.forEach(function (elem) {
+                    if (elem.id == taskBlock.id) {
+                        task.isChecked = true;
+                        saveToLocaleStorage();
+                    }
+                })
             }
         });
-        taskBlock.querySelector('.task-remove').addEventListener('click', function(e){
-            if(e.target.closest('.task-block').id == task.id){
+        taskBlock.querySelector('.task-remove').addEventListener('click', function () {
+            if (taskBlock.id == task.id) {
                 document.getElementById(task.id).remove();
-                dataObject.tasks.forEach(function(elem,pos){
-                    if(elem.id == task.id){
+                dataObject.tasks.forEach(function (elem, pos) {
+                    if (elem.id == task.id) {
                         dataObject.tasks.splice(pos, 1);
                         saveToLocaleStorage();
                     }
