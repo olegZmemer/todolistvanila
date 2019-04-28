@@ -2,20 +2,20 @@
     let addForm = document.querySelector('#add-task-form'),
         removeButton = document.querySelector('.task-remove'),
         taskNameInput = document.querySelector('#add-task'),
-        dataObject = {
+        dataObject = { // Main object with data
             tasks: [],
             id: 0
         },
-        serializedDataObject = JSON.stringify(dataObject);
+        serializedDataObject = JSON.stringify(dataObject); // Serialized main object
     if (localStorage.getItem('mainData')) {
-        (function loadStorage() {
+        (function loadStorage() { // Function whick load data from localStorage if there is something
 
-            let data = JSON.parse(localStorage.getItem("mainData"));
-            let tasks = data.tasks;
-            dataObject.id = data.id;
-            dataObject.tasks = data.tasks;
-            data.id = dataObject.id;
-            tasks.forEach(function (task) {
+            let data = JSON.parse(localStorage.getItem("mainData")), // Take data from the localStorage
+                tasks = data.tasks;
+            dataObject.id = data.id; // Set last ID to main object
+            dataObject.tasks = data.tasks; // Set last version of task-array to main object
+
+            tasks.forEach(function (task) { // Create elements by localStorage data
                 let taskBlock = document.createElement('div');
                 taskBlock.classList.add('task-block');
                 taskBlock.innerHTML = `
@@ -38,14 +38,14 @@
     }
 
     function addTask() {
-        let task = {};
-        dataObject.id++;
-        task.id = dataObject.id;
-        task.name = taskNameInput.value;
-        task.isChecked = false;
-
+        dataObject.id++; // Refresh id
+        let task = { // Main task data object 
+            id: dataObject.id,
+            name:taskNameInput.value,
+            isChecked :false
+        };
         dataObject.tasks.push(task);
-        saveToLocaleStorage();
+        saveToLocaleStorage(); // Save new task-array to main object 
         let taskBlock = document.createElement('div');
         taskBlock.classList.add('task-block');
         taskBlock.innerHTML = `
@@ -63,7 +63,7 @@
         checkTask(taskBlock, task);
     }
 
-    function checkTask(taskBlock, task) {
+    function checkTask(taskBlock, task) { // Set eventListeners to every element. 
         taskBlock.querySelector('.check-task-button').addEventListener('change', function () {
             if (taskBlock.id == task.id) {
                 let taskBlock = document.getElementById(task.id);
@@ -91,10 +91,9 @@
         })
     }
 
-    function saveToLocaleStorage() {
+    function saveToLocaleStorage() { // Function which save data to localStorage
         serializedDataObject = JSON.stringify(dataObject);
         return localStorage.setItem('mainData', serializedDataObject);
     }
     addForm.addEventListener('submit', addTask);
-    //localStorage.clear();
 })()
