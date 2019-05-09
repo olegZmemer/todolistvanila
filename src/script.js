@@ -78,7 +78,7 @@
                 })
             }
         });
-        taskBlock.querySelector('.task-remove').addEventListener('click', function () {
+        taskBlock.querySelector('.task-remove').addEventListener('click', function () { // Event listener for REMOVE button
             if (taskBlock.id == task.id) {
                 document.getElementById(task.id).remove();
                 dataObject.tasks.forEach(function (elem, pos) {
