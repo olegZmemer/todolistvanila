@@ -41,4 +41,4 @@ window.addEventListener('load', (e)=>{
     data.tasks.tasks.forEach(el=>{
         todoView.renderTask(el);
     })
-})
+});
