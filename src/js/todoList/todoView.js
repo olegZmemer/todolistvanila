@@ -6,9 +6,10 @@ export const getInput = () => elements.taskNameInput.value
 export const renderTask = (task) => {
     const markup = `
         <div class="task ${task.isChecked ? 'task__checked' : ''}" data-taskid = '${task.id}'>
+        <input type="checkbox" class="task__check-button" ${task.isChecked ? 'disabled checked' : ''}>
             <div class="task__info">
-                <label><input type="checkbox" class="task__check-button" ${task.isChecked ? 'disabled checked' : ''}>${task.title}</label>
-                <div class="task__description">Something</div>
+                <div class='task__title'>${task.title}</div>
+                <div class="task__description">${task.desc ? task.desc : 'Click to add the description'}</div>
             </div>
             <button class="task__remove">X</button>
         </div>
@@ -30,4 +31,10 @@ export const checkTask = (id) => {
     task.querySelector('.task__check-button').setAttribute('checked', true);
 
     elements.checkedTasksList.insertAdjacentElement('beforeend', task);
+}
+export const updateTask = (id, data)=>{
+    const task = document.querySelector(`div[data-taskid='${id}']`);
+    if(data.isChecked) checkTask(id);
+    if(data.title) task.querySelector('.task__title').textContent = data.title;
+    if(data.desc) task.querySelector('.task__description').textContent = data.desc;
 }
