@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List</title>
+    
+<link href="/assets/css/app.css" rel="stylesheet"></head>
+
+<body>
+    <div class="task-popup">
+        <div class="task-popup__block">
+            <div class="task-popup__header">
+                <label for="task-popup__title"><input class="task-popup__title" type="text" name='task-name' id="task-popup__title" placeholder="Название задачи" data-title='Опачинчопа'></label>
+            </div>
+            <div class="task-popup__main">
+                <div class="task-popup__description">
+                    <textarea name="task-description" id="task-popup__description" cols="40" rows="5" placeholder="Добавьте описание к задаче"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="container">
+            <div class="header">
+                <button class="header__back-button">&lt -</button>
+                <div class="header__title">Your main tasks</div>
+                <button class="header__settings">*</button>
+            </div>
+            <div class="add-block">
+                <form action="" id="add-task-form" onsubmit= 'return false' method="GET">
+                    <label for="add-task">
+                        <input type="text" name="add-task" id="add-task" placeholder="Write your task" class="add-input" required>
+                    </label>
+                    <input type="submit" class="add-button" value = '+'>
+                </form>
+            </div>
+            <div class="tasks-container">
+                <div class="active-tasks-list">
+                    <div class="active-tasks-list__title">Активные задачи</div>
+                    <!-- <div class="task">
+                        <div class="task__info">
+                            <label><input type="checkbox" class="task__check-button">TaskName</label>
+                            <div class="task__description">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                        </div>
+                        <button class="task__remove">X</button>
+                    </div> -->
+                </div>
+                <div class="checked-tasks-list">
+                    <div class="checked-tasks-list__title">Выполнено</div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script type="text/javascript" src="/assets/js/app.js"></script></body>
+
+</html>

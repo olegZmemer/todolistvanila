@@ -6,38 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TODO List</title>
-    
+
 </head>
 
 <body>
-    <div class="task-popup">
+    <div class="task-popup task-popup-inactive" data-popupid = ''>
         <div class="task-popup__block">
-            <div class="task-popup__header">
-                <div class="task-popup__title">Название карточки тут и его можно поменять</div>
-            </div>
-            <div class="task-popup__main">
-
-            </div>
+            <form action="" id="task-popup-form">
+                <div class="task-popup__header">
+                    <label for="task-popup__title"><input class="task-popup__title" type="text" name='task-name'
+                            id="task-popup__title" placeholder="Название задачи"></label>
+                </div>
+                <div class="task-popup__main">
+                    <div class="task-popup__description">
+                        <div class="task-popup__description-title">Добавить описание к задаче</div>
+                        <textarea name="task-description" id="task-popup__description" cols="40" rows="5"
+                            placeholder="Добавьте описание к задаче"></textarea>
+                    </div>
+                    <div class="task-popup__list">
+                        <div class="task-popup__list-title task-popup-title">Добавить</div>
+                        <ul class="task-popup__list-list">
+                            <li class="task-popup__list-element"><button class="task-popup__list-button">Срок</button>
+                            </li>
+                            <li class="task-popup__list-element"><button class="task-popup__list-button">Цвет</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="task-popup__footer">
+                    <div class="task-popup__save"><button type="submit"
+                            class="task-popup__button task-popup__button-save">Сохранить</button></div>
+                    <div class="task-popup__cancel"><button
+                            class="task-popup__button task-popup__button-cancel">Отменить</button></div>
+                </div>
+            </form>
         </div>
     </div>
     <div class="wrapper">
         <div class="container">
             <div class="header">
-                <button class="header__back-button">&lt -</button>
+                <button class="header__back-button" style="background: url('./assets/img/icons/arrow.png') no-repeat;background-position-x: 50%"></button>
                 <div class="header__title">Your main tasks</div>
-                <button class="header__settings">*</button>
+                <button class="header__settings" style="background: url('./assets/img/icons/settings.png') no-repeat;background-position-x: 50%; background-position-y: 40%"></button>
             </div>
             <div class="add-block">
-                <form action="" id="add-task-form" onsubmit= 'return false' method="GET">
+                <form action="" id="add-task-form" onsubmit='return false' method="GET">
                     <label for="add-task">
-                        <input type="text" name="add-task" id="add-task" placeholder="Write your task" class="add-input" required>
+                        <input type="text" name="add-task" id="add-task" placeholder="Write your task" class="add-input"
+                            required>
                     </label>
-                    <input type="submit" class="add-button" value = '+'>
+                    <input type="submit" class="add-button" value="" style="background: url('./assets/img/icons/plus-solid.svg') no-repeat;background-position-x: 50%">
                 </form>
             </div>
             <div class="tasks-container">
                 <div class="active-tasks-list">
-                    <div class="active-tasks-list__title">Активные задачи</div>
+                    <div class="active-tasks-list__title">Your tasks</div>
                     <!-- <div class="task">
                         <div class="task__info">
                             <label><input type="checkbox" class="task__check-button">TaskName</label>
@@ -47,13 +70,13 @@
                     </div> -->
                 </div>
                 <div class="checked-tasks-list">
-                    <div class="checked-tasks-list__title">Выполнено</div>
-                    
+                    <div class="checked-tasks-list__title">Done</div>
+
                 </div>
             </div>
         </div>
     </div>
-    
+
 </body>
 
 </html>

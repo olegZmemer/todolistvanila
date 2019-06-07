@@ -7,8 +7,8 @@ export const renderTask = (task) => {
     const markup = `
         <div class="task ${task.isChecked ? 'task__checked' : ''}" data-taskid = '${task.id}'>
             <div class="task__info">
-                <label><input type="checkbox" class="task__check-button" ${task.isChecked ? 'disabled checked' : ''}>${task.title}</label>
-                <div class="task__description">Something</div>
+                <label class='task__check'><input type="checkbox" class="task__check-button" ${task.isChecked ? 'disabled checked' : ''}>${task.title}</label>
+                <div class="task__description">${task.desc ? task.desk : 'Click to add the description'}</div>
             </div>
             <button class="task__remove">X</button>
         </div>

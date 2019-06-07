@@ -34,8 +34,16 @@ module.exports = {
         options: {
           name: '[name].[ext]'
         }
-      }, {
-        test: /\.scss$/,
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        test: /\.(sass|scss)$/,
         use: [
           'style-loader',
           MiniCssExtractPlugin.loader,
@@ -49,12 +57,13 @@ module.exports = {
             options: {
               sourceMap: true,
               config: {
-                path: `${PATHS.src}/js/postcss.config.js`
+                path: `./postcss.config.js`
               }
             }
           }, {
             loader: 'sass-loader',
             options: {
+              indentedSyntax: true,
               sourceMap: true
             }
           }
@@ -74,7 +83,7 @@ module.exports = {
             options: {
               sourceMap: true,
               config: {
-                path: `${PATHS.src}/js/config/postcss.config.js`
+                path: `./postcss.config.js`
               }
             }
           }
@@ -93,13 +102,17 @@ module.exports = {
       filename: './index.html'
     }),
     new CopyWebpackPlugin([{
-        from: `${PATHS.src}/img`,
+        from: `${PATHS.src}/${PATHS.assets}img`,
         to: `${PATHS.assets}img`
       },
       {
         from: `${PATHS.src}/static`,
         to: ''
       },
+      {
+        from: `${PATHS.src}/${PATHS.assets}fonts`,
+        to: `${PATHS.assets}fonts`
+      }
     ])
   ],
 }
