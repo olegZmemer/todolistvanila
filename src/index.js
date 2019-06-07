@@ -63,4 +63,10 @@ window.addEventListener('keydown', (e) => {
 })
 elements.taskPopupForm.addEventListener('submit', (e)=>{
     e.preventDefault();
+    const newTask = popupView.formProccess();
+    data.tasks.processPopup(newTask);
+    // todoView.deleteTask(newTask.id);
+    // todoView.renderTask(data.tasks.tasks.find(el=>el.id === newTask.id));
+    todoView.updateTask(newTask.id, data.tasks.tasks.find(el=>el.id === newTask.id))
+    popupView.closePopup();
 })

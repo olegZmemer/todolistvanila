@@ -23,6 +23,11 @@ export default class todoList {
         task.isChecked = true;
         this.saveData();
     }
+    processPopup(task){
+        const taskIndex = this.tasks.findIndex(el=>el.id === task.id);
+        Object.assign(this.tasks[taskIndex], task);
+        this.saveData()
+    }
     saveData(){
         localStorage.setItem('tasks', JSON.stringify(this.tasks));
     }
